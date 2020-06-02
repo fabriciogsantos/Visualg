@@ -1,5 +1,5 @@
 Algoritmo "Pescador"
-// DescriÁ„o   : Algoritimo de calculo de multa de pesca
+// Descri√ß√£o   : Algoritimo de calculo de multa de pesca
 // Autor(a)    : Fabricio
 // Data atual  : 02/06/2020
 Var
@@ -21,9 +21,9 @@ inicio
    escreval("":10," | |    | | | | | |__  | |  __| |  | | | |")
    escreval("":10," |_|    |_| |_| |____| |_| |____|  |_| |_|")
    escreval("")
-   escreval("":10,"TRABALHO DE L”GICA DE PROGRAMA«√O")
-   escreval("":10,"PROFESSOR : AndrÈ Augusto de Abreu Rodrigues ")
-   escreval("":10,"CURSO     : ENGENHARIA DE COMPUTA«√O 2020 1∫ PERIODO ")
+   escreval("":10,"TRABALHO DE L√ìGICA DE PROGRAMA√á√ÉO")
+   escreval("":10,"PROFESSOR : Andr√© Augusto de Abreu Rodrigues ")
+   escreval("":10,"CURSO     : ENGENHARIA DE COMPUTA√á√ÉO 2020 1¬∫ PERIODO ")
    escreval("":30,"ALUNO ")
    escreval("":20,"FABRICIO GOMES SANTOS ")
    escreval("")
@@ -45,30 +45,30 @@ inicio
    escreval("":15,"  /:::::::::::\' _  ' ")
    escreval("":15," /:::=======:::\`\`\  ")
    escreval("":15," `'''''''''''''`  '-' ")
-   escreval("":15," POR HOJE … S” PESSOAL !!! ")
+   escreval("":15," POR HOJE √â S√ì PESSOAL !!! ")
    timer 2000
    timer 0
 Fimprocedimento
 
 
-// Inicializa vetor descriÁ„o
+// Inicializa vetor descri√ß√£o
 Procedimento InicilizaDescricaoOpcao
 var
 inicio
    descricaoOpcao[1]:="1 - Informar peso pesca  "
-   descricaoOpcao[2]:="2 - RelatÛrio peso pesca "
+   descricaoOpcao[2]:="2 - Relat√≥rio peso pesca "
    descricaoOpcao[3]:="3 - Sobre                "
    descricaoOpcao[4]:="4 - Sair                 "
 Fimprocedimento
 
-// CriaÁ„o do quadro de opÁıes da tela
+// Cria√ß√£o do quadro de op√ß√µes da tela
 Procedimento QuadroTela(numeroLinhas,numeroColunas,numeroCampo,espacamento:inteiro)
 var
    contador,contador1,numeroDescricao:inteiro
    linha:caracter
 Inicio
 
-   // Inicializa linha com traÁos
+   // Inicializa linha com tra√ßos
    para contador de 1 ate numeroColunas faca
       linha:=linha+"-"
    FimPara
@@ -90,7 +90,7 @@ Inicio
    fimpara
 FimProcedimento
 
-// ContruÁ„o da tela
+// Contru√ß√£o da tela
 Procedimento Tela
 var
 
@@ -100,10 +100,10 @@ inicio
 
 FimProcedimento
 
-// Exibir notificaÁ„o
+// Exibir notifica√ß√£o
 Procedimento Notificacao(mensagemTela:caracter)
 inicio
-   escreval(" ":25,"ATEN«√O")
+   escreval(" ":25,"ATEN√á√ÉO")
    escreval(" ":15,"(",mensagemTela,")")
    timer 2000
    timer 0
@@ -136,7 +136,7 @@ var
    linha:caracter
 inicio
 
-   / Inicializa linha com traÁos
+   / Inicializa linha com tra√ßos
    para contador de 1 ate 62 faca
       linha:=linha+"-"
    FimPara
@@ -166,7 +166,7 @@ inicio
 
 FimProcedimento
 
-// Inicio FunÁıes
+// Inicio Fun√ß√µes
 //Valida a entrada de dados  Numerico
 Funcao EntradaDadosNumerico(tipoTermo:caracter;espacamento:inteiro):real
 var
@@ -177,7 +177,7 @@ inicio
       escreva("| Informe ",tipoTermo:espacamento)
       leia(numero)
       se numero =0 entao
-         Notificacao(tipoTermo+" n„o È valido")
+         Notificacao(tipoTermo+" n√£o √© valido")
       fimse
       limpatela
    fimenquanto
@@ -194,7 +194,7 @@ inicio
       escreva("| Informe ",tipoTermo:espacamento)
       leia(data)
       se ValidarData(data) = falso entao
-         Notificacao(tipoTermo+" n„o È valido")
+         Notificacao(tipoTermo+" n√£o √© valido")
          data:=""
       fimse
       limpatela
@@ -202,12 +202,12 @@ inicio
    retorne copia(data;1,10)
 Fimfuncao
 
-// Verifica se a data est· valida
+// Verifica se a data est√° valida
 Funcao ValidarData(data:caracter):logico
 var
    dataValida:logico
-   dia,mes,ano:inteiro
-   barra1,barra2:caracter
+   dia,mes,ano,contador:inteiro
+   barra1,barra2,dadoData:caracter
    messes:vetor[1..12] de inteiro
 inicio
    messes[1]:=31
@@ -222,12 +222,26 @@ inicio
    messes[10]:=31
    messes[11]:=30
    messes[12]:=31
-   dia:=Caracpnum(copia(data:1,2))
-   barra1:=copia(data:3,1)
-   mes:=Caracpnum(copia(data:4,2))
-   barra2:=copia(data:6,1)
-   ano:=Caracpnum(copia(data:7,4))
    dataValida:=verdadeiro
+
+   Para contador de 1 ate 10 faca
+      dadoData:=copia(data:contador,1)
+      se (dadoData="") entao
+         dataValida:=falso
+         interrompa
+      fimse
+      se (Asc(dadoData)<47) ou (Asc(dadoData)>57) entao
+         dataValida:=falso
+      fimse
+   Fimpara
+
+   se dataValida=verdadeiro entao
+      dia:=Caracpnum(copia(data:1,2))
+      barra1:=copia(data:3,1)
+      mes:=Caracpnum(copia(data:4,2))
+      barra2:=copia(data:6,1)
+      ano:=Caracpnum(copia(data:7,4))
+   fimse
 
    se dia <= 0 entao
       dataValida:=falso
@@ -277,7 +291,7 @@ inicio
 
 Fimprocedimento
 
-// FunÁ„o AdiÁ„o
+// Fun√ß√£o Adi√ß√£o
 Funcao CalculoPesoPesca():caracter
 var
    data,retorno:caracter
@@ -318,7 +332,7 @@ FimFuncao
 Inicio
    enquanto verdadeiro faca
       Tela
-      escreva("| Informe a funÁ„o que deseja realizada :":45)
+      escreva("| Informe a fun√ß√£o que deseja realizada :":45)
       leia(opcao)
 
       se opcao=4 entao
@@ -328,7 +342,7 @@ Fimalgoritmo
 fimse
 
 se (opcao > 4) ou (opcao = 0) entao
-   Notificacao("FunÁ„o escolhida n„o È valida")
+   Notificacao("Fun√ß√£o escolhida n√£o √© valida")
 senao
    ExecutarFuncao
    opcao:=0
