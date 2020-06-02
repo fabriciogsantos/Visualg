@@ -4,7 +4,7 @@ Algoritmo "Pescador"
 // Data atual  : 02/06/2020
 Var
    descricaoOpcao:vetor [1..4] de caracter
-   historicoPesca:vetor [1..6,1..3] de caracter
+   historicoPesca:vetor [1..5,1..3] de caracter
    opcao,pausar,indiceHistorico:inteiro
    messes:vetor[1..12] de inteiro
 
@@ -35,7 +35,11 @@ Fimprocedimento
 
 // Tela de logout
 procedimento Sair
+var
+   mensagemFinal:caracter
+   contador:inteiro
 inicio
+
    escreval("":15,"   .---------. | == | ")
    escreval("":15,"   |.-'''''-.| |----| ")
    escreval("":15,"   ||#PARTIU|| | == | ")
@@ -45,8 +49,12 @@ inicio
    escreval("":15,"  /:::::::::::\' _  ' ")
    escreval("":15," /:::=======:::\`\`\  ")
    escreval("":15," `'''''''''''''`  '-' ")
-   escreval("":15," POR HOJE É SÓ PESSOAL !!! ")
-   timer 2000
+   escreva("":15)
+   timer 150
+   mensagemFinal:="POR HOJE É SÓ PESSOAL !!! "
+   para contador de 1 ate 26 faca
+      escreva(copia(mensagemFinal;contador,1))
+   fimpara
    timer 0
 Fimprocedimento
 
@@ -305,11 +313,13 @@ inicio
    peso:=EntradaDadosNumerico("o Peso da Pesca",20)
    indiceHistorico:=indiceHistorico+1
 
-   se indiceHistorico=7 entao
-      para contador de 1 ate 5 faca
-         indiceHistorico[contador]:=indiceHistorico[(contador+1)]
+   se indiceHistorico=6 entao
+      para contador de 1 ate 4 faca
+         historicoPesca[contador,1]:=historicoPesca[(contador+1),1]
+         historicoPesca[contador,2]:=historicoPesca[(contador+1),2]
+         historicoPesca[contador,3]:=historicoPesca[(contador+1),3]
       fimpara
-      indiceHistorico=6
+      indiceHistorico:=5
    fimse
 
    retorno:="Em "+data+" pesca de "+Numpcarac(peso)+" Kilos"
@@ -334,7 +344,7 @@ Inicio
       Tela
       escreva("| Informe a função que deseja realizada :":45)
       leia(opcao)
-
+      opcao:=Caracpnum(Copia(Numpcarac(opcao);1,1))
       se opcao=4 entao
          limpatela
          Sair
